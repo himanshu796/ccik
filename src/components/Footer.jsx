@@ -1,4 +1,8 @@
-export default function Footer({ mapLogo }) {
+import mapImg from '../assets/map_preview.png'
+
+
+export default function Footer() {
+    
     return (
         <footer className='bg-blue-400 text-white p-6 md:p-8 w-full flex flex-col space-y-8'>
 
@@ -8,7 +12,7 @@ export default function Footer({ mapLogo }) {
                     <div className='flex flex-col space-y-2'>
                         <h2 className='text-lg md:text-xl font-semibold mb-2'>Office</h2>
                         <p>
-                            <strong>Address:</strong> Srinagar, Dalgate
+                            <strong>Address:</strong> Chamber Lane, Off M.A Link Road,<br /> Bishamber Nagar, Srinagar-190001, Kashmir
                         </p>
 
                         <p className='mt-2'>
@@ -18,18 +22,16 @@ export default function Footer({ mapLogo }) {
 
                     {/* Map */}
                     <a
-                        href='https://www.google.com/maps/place/Dalgate+Bridge,+Srinagar+190001/@34.0806814,74.828168,17z/data=!3m1!4b1!4m6!3m5!1s0x38e18f786816e80b:0x6ee20c976eeb5d3d!8m2!3d34.0806814!4d74.828168!16s%2Fg%2F1ydp1td8s?entry=ttu&g_ep=EgoyMDI1MTIwMi4wIKXMDSoASAFQAw%3D%3D'
+                        href='https://www.google.com/maps/search/Chamber+Lane,+Off+M.A+Link+Road,+Bishamber+Nagar,+Srinagar-190001,+Kashmir/@34.1183678,74.7442857,12z/data=!3m1!4b1!4m2!2m1!6e3?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA2N0gBUAM%3D'
                         target='_blank'
                         rel='noopener noreferrer'
                     >
                         <div className='w-28 h-20 md:w-32 md:h-24 rounded-lg border-2 border-white overflow-hidden shadow-lg hover:opacity-90 transition'>
-                            {mapLogo && (
                                 <img
-                                    src={mapLogo}
+                                    src={mapImg}
                                     alt='CCIK Location Map'
                                     className='w-full h-full object-cover'
                                 />
-                            )}
                         </div>
                     </a>
                 </div>
@@ -99,7 +101,7 @@ export default function Footer({ mapLogo }) {
                 </div>
             </div>
 
-            <p className="bg-blue-400 py-3 px-5 text-white md:text-base opacity-80 mt-8 text-center">
+            <p className="bg-blue-400 py-3 px-5 text-white md:text-base opacity-80 mt-4 text-center">
                 © {new Date().getFullYear()} CCIK – All Rights Reserved.
             </p>
 

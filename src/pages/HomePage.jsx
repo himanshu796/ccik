@@ -1,17 +1,14 @@
 import { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-import { data } from 'react-router-dom';
+
 
 export default function HomePage() {
     const [members, setMembers] = useState([])
-    const [ccikLogo, setCcikLogo] = useState(null)
-    const [instagramLogo, setInstagramLogo] = useState(null)
-    const [facebookLogo, setFacebookLogo] = useState(null)
-    const [mapLogo, setMapLogo] = useState(null)
     const [slideshowImages, setSlideshowImages] = useState([]);
     const [galleryImages, setGalleryImages] = useState([]);
     const [slideIndex, setSlideIndex] = useState(0);
@@ -23,6 +20,10 @@ export default function HomePage() {
 
     const scrollRef = useRef(null);
     const youtubeScrollRef = useRef(null);
+    const navigate = useNavigate();
+
+    // Define the navbar order of sectors here
+    const navbarSectorOrder = ["Tourism", "Handicrafts", "Agriculture", "Agro & Food Processing", "Hospitality", "Spices", "Education", "Healthcare", "Railways", "MSME Development Skill"];
 
     useEffect(() => {
 
@@ -34,25 +35,6 @@ export default function HomePage() {
                     id: d.id,
                     ...d.data()
                 })));
-
-            {/* Fetch Logos*/ }
-            const logoSnap = await getDocs(collection(db, 'logo'));
-            logoSnap.forEach(doc => {
-                const d = doc.data();
-
-                if (d.type === 'ccik') {
-                    setCcikLogo(d.logoUrl);
-                }
-                if (d.type === 'instagram') {
-                    setInstagramLogo(d.logoUrl)
-                }
-                if (d.type === 'facebook') {
-                    setFacebookLogo(d.logoUrl)
-                }
-                if (d.type === 'map') {
-                    setMapLogo(d.logoUrl)
-                }
-            })
 
             {/* Fetch Slideshow Images*/ }
 
@@ -71,7 +53,6 @@ export default function HomePage() {
                 })));
 
             {/* Fetch Upcoming Events */ }
-
             setUpcomingEvents((await getDocs(collection(db, 'upcomingEvents')))
                 .docs.map(d => ({
                     id: d.id,
@@ -93,11 +74,17 @@ export default function HomePage() {
                 })));
 
             {/* Fetch Sectors */ }
-            setSectors((await getDocs(collection(db, "sectors")))
+            const fetchedSectors = (await getDocs(collection(db, "sectors")))
                 .docs.map(d => ({
                     id: d.id,
                     ...d.data()
-                })));
+                }));
+
+            // Sort Sectors according to navbar
+            const sortedSectors = fetchedSectors.slice().sort(
+                (a, b) => navbarSectorOrder.indexOf(a.name) - navbarSectorOrder.indexOf(b.name)
+            )
+            setSectors(sortedSectors);
         };
         fetchAll();
     }, []);
@@ -114,45 +101,41 @@ export default function HomePage() {
 
 
     useEffect(() => {
-    if (!youtubeScrollRef.current || youtubeVideos.length === 0) return;
+        if (!youtubeScrollRef.current || youtubeVideos.length === 0) return;
 
-    const interval = setInterval(() => {
-        setYoutubeIndex(prev => {
-            const nextIndex = (prev + 1) % youtubeVideos.length;
+        const interval = setInterval(() => {
+            setYoutubeIndex(prev => {
+                const nextIndex = (prev + 1) % youtubeVideos.length;
 
-            const container = youtubeScrollRef.current;
-            const videoElements = container.children;
-            const activeVideo = videoElements[nextIndex];
+                const container = youtubeScrollRef.current;
+                const videoElements = container.children;
+                const activeVideo = videoElements[nextIndex];
 
-            if (activeVideo) {
-                const containerWidth = container.offsetWidth;
-                const videoWidth = activeVideo.offsetWidth;
-                const scrollLeft = activeVideo.offsetLeft - (containerWidth / 2) + (videoWidth / 2);
+                if (activeVideo) {
+                    const containerWidth = container.offsetWidth;
+                    const videoWidth = activeVideo.offsetWidth;
+                    const scrollLeft = activeVideo.offsetLeft - (containerWidth / 2) + (videoWidth / 2);
 
-                container.scrollTo({
-                    left: scrollLeft,
-                    behavior: "smooth"
-                });
-            }
+                    container.scrollTo({
+                        left: scrollLeft,
+                        behavior: "smooth"
+                    });
+                }
 
-            return nextIndex;
-        });
-    }, 3500);
+                return nextIndex;
+            });
+        }, 3500);
 
-    return () => clearInterval(interval);
-}, [youtubeVideos]);
+        return () => clearInterval(interval);
+    }, [youtubeVideos]);
 
 
     return (
         <div className="w-full min-h-screen">
 
-            <Header
-                ccikLogo={ccikLogo}
-                instagramLogo={instagramLogo}
-                facebookLogo={facebookLogo}
-            />
+            <Header />
 
-            <div className='pt-28'>
+            <div className='pt-16 sm:pt-20 md:pt-24 lg:pt-28'>
 
                 {/* Slideshow Section */}
                 <div className="overflow-hidden w-full h-[200px] sm:h-[250px] md:h-[300px] lg:h-[360px] relative">
@@ -238,26 +221,28 @@ export default function HomePage() {
                 </div>
 
 
-                {/* Services & Upcoming Events Section*/}
+                {/* News & Upcoming Events Section*/}
                 <div className='w-full py-8 px-4 md:px-10 mt-8'>
                     <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
 
-                        {/* Services */}
-                        <div className='bg-gray-100 rounded-xl shadow-lg p-6'>
-                            <h2 className='text-xl md:text-2xl font-semibold mb-4 text-blue-900'>Services</h2>
+                        {/* News */}
+                        <div className='bg-gray-400 p-4 w-full rounded-xl' >
+                            <h2 className='text-xl md:text-2xl font-semibold mb-4 mx-10'>News & Announcements</h2>
 
-                            <div className='flex flex-wrap justify-center gap-6'>
-                                {['Membership Support', 'Business Advisory', 'Trade Facilitation', 'B2B Matchmaking'].map((service, index) => (
-                                    <div
-                                        key={index}
-                                        className='w-24 h-24 md:w-28 md:h-28 rounded-full border-2 border-red-900 flex items-center text-center text-sm md:text-base font-medium text-emerald-900 shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer'>{service}</div>
+                            <div>
+                                {newsList.map((news, index) => (
+                                    <div key={index} className='mb-4 p-4 bg-gray-300 rounded-lg'>
+                                        <h3 className='font-semibold text-lg md:text-xl'>{news.title}</h3>
+                                        <p className='text-gray-700 mt-1 text-sm md:text-lg sm:text-base'>{news.content}</p>
+                                    </div>
                                 ))}
                             </div>
                         </div>
 
+
                         {/* Upcoming Events */}
-                        <div className='bg-slate-400 rounded-xl shadow-lg p-6'>
-                            <h2 className='text-xl md:text-2xl font-semibold mb-4 text-blue-900'>
+                        <div className='bg-gray-400 rounded-xl shadow-lg p-4'>
+                            <h2 className='text-xl md:text-2xl font-semibold mb-4 mx-10'>
                                 Upcoming Events</h2>
 
                             <div className='flex flex-col space-y-6'>
@@ -268,7 +253,7 @@ export default function HomePage() {
                                     >
                                         {/* Event Image */}
                                         {event.imageUrl && (
-                                            <div className='w-full md:w-44 lg:w-52 shrink-0 bg-gray-100'>
+                                            <div className='w-full md:w-44 lg:w-52 shrink-0'>
                                                 <img
                                                     src={event.imageUrl}
                                                     alt={event.title}
@@ -319,15 +304,25 @@ export default function HomePage() {
                         </div>
                     </div>
 
-                    {/* News */}
-                    <div className='bg-gray-400 p-4 w-full' >
-                        <h2 className='text-xl md:text-2xl font-semibold mb-2 mx-10'>News & Announcements</h2>
 
-                        <div>
-                            {newsList.map((news, index) => (
-                                <div key={index} className='mb-4 p-4 bg-gray-300 rounded-lg'>
-                                    <h3 className='font-semibold text-lg md:text-xl'>{news.title}</h3>
-                                    <p className='text-gray-700 mt-1 text-sm md:text-lg sm:text-base'>{news.content}</p>
+                    {/* Services */}
+                    <div className='bg-gray-300 shadow-lg p-6'>
+                        <h2 className='text-xl md:text-2xl font-semibold mb-4 text-blue-900'>
+                            Services
+                        </h2>
+
+                        <div className='flex flex-wrap justify-center gap-6'>
+                            {[
+                                { name: 'Membership Support', path: '/membership-support' },
+                                { name: 'Business Advisory', path: '/business-advisory' },
+                                { name: 'Trade Facilitation', path: '/trade-facilitation' },
+                                { name: 'B2B Matchmaking', path: '/b2b-matchmaking' }
+                            ].map((service, index) => (
+                                <div
+                                    key={index}
+                                    onClick={() => navigate(service.path)}
+                                    className='w-24 h-24 md:w-28 md:h-28 rounded-full border-2 border-red-900 flex items-center text-center text-sm md:text-base font-medium text-emerald-900 shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer'>
+                                    {service.name}
                                 </div>
                             ))}
                         </div>
@@ -396,28 +391,49 @@ export default function HomePage() {
                         <h2 className='text-xl md:text-2xl font-semibold mb-4 text-white'>Sectors</h2>
 
                         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6'>
-                            {sectors.map((sector) => (
-                                <div
-                                    key={sector.id}
-                                    className='group flex flex-col items-center bg-gray-200 rounded-xl overflow-hidden shadow-md transition-all duration-300 ease-out hover:-translate-y-2 hover:scale-[1.03] hover:shadow-2xl'
-                                >
-                                    {sector.imageUrl && (
-                                        <img
-                                            src={sector.imageUrl}
-                                            alt={sector.name}
-                                            className='w-full h-36 object-cover'
-                                        />
-                                    )}
-                                    <div className='w-full p-2 text-center font-semibold text-gray-800'>{sector.name}</div>
-                                </div>
-                            ))}
+                            {sectors.map((sector) => {
+
+                                const sectorRoutes = {
+                                    Tourism: '/tourism',
+                                    Handicrafts: '/handicrafts',
+                                    Agriculture: '/agriculture',
+                                    //Agro & Food Processing: '/agro-food-processing',
+                                    //Hospitality: '/hospitality',
+                                    //Spices: '/spices',
+                                    //Education: '/education',
+                                    //Healthcare: '/healthcare',
+                                    //Railways: '/railways',
+                                    //MSME Development Skill: '/msme-development-skill'
+                                };
+                                const path = sectorRoutes[sector.name];
+
+                                return (
+                                    <div
+                                        key={sector.id}
+                                        onClick={() => {
+                                            if (path) navigate(path);
+                                        }}
+                                        className='group flex flex-col items-center bg-gray-200 rounded-xl overflow-hidden shadow-md transition-all duration-300 ease-out hover:-translate-y-2 hover:scale-[1.03] hover:shadow-2xl cursor-pointer'
+                                    >
+                                        {sector.imageUrl && (
+                                            <img
+                                                src={sector.imageUrl}
+                                                alt={sector.name}
+                                                className='w-full h-36 object-cover'
+                                            />
+                                        )}
+                                        <div className='w-full p-2 text-center font-semibold text-gray-800'>
+                                            {sector.name}
+                                        </div>
+                                    </div>
+                                )
+                            })}
                         </div>
                     </div>
                 </div>
-
             </div>
 
-            <Footer mapLogo={mapLogo} />
-        </div >
+            <Footer />
+        </div>
     )
 }
