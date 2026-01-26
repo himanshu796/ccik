@@ -4,7 +4,7 @@ import mapImg from '../assets/map_preview.png'
 export default function Footer() {
     
     return (
-        <footer className='bg-blue-400 text-white p-6 md:p-8 w-full flex flex-col space-y-8'>
+        <footer className='bg-[#C5D89D] text-green-900 p-6 md:p-8 w-full flex flex-col space-y-8'>
 
             <div className='flex flex-col md:flex-row md:justify-between space-y-8 md:space-y-0 md:space-x-10'>
 
@@ -26,7 +26,7 @@ export default function Footer() {
                         target='_blank'
                         rel='noopener noreferrer'
                     >
-                        <div className='w-28 h-20 md:w-32 md:h-24 rounded-lg border-2 border-white overflow-hidden shadow-lg hover:opacity-90 transition'>
+                        <div className='w-28 h-20 md:w-32 md:h-24 rounded-lg border-2 border-[#63A361] overflow-hidden shadow-lg hover:opacity-90 transition'>
                                 <img
                                     src={mapImg}
                                     alt='CCIK Location Map'
@@ -101,7 +101,7 @@ export default function Footer() {
                 </div>
             </div>
 
-            <p className="bg-blue-400 py-3 px-5 text-white md:text-base opacity-80 mt-4 text-center">
+            <p className="bg-[#C5D89D] py-3 px-5 text-green-900 md:text-base opacity-80 mt-4 text-center">
                 © {new Date().getFullYear()} CCIK – All Rights Reserved.
             </p>
 

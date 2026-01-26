@@ -148,7 +148,7 @@ export default function HomePage() {
                         {slideshowImages.map((img, index) => (
                             <div
                                 key={img.id}
-                                className="w-full h-full flex-shrink-0"
+                                className="w-full h-full shrink-0"
                             >
                                 <img
                                     src={img.imageUrl}
@@ -161,8 +161,8 @@ export default function HomePage() {
                 </div>
 
                 {/* Small image section */}
-                <div className='w-full bg-indigo-300 py-4 mt-1'>
-                    <div className='flex items-center space-x-3 px-4'>
+                <div className='w-full bg-[#C5D89D] py-4 mt-1'>
+                    <div className='flex items-center space-x-3 px-4 overflow-hidden'>
 
                         {/* Left Arrow button */}
                         <button
@@ -175,7 +175,7 @@ export default function HomePage() {
                                     scrollRef.current.scrollBy({ left: -imgWidth, behavior: 'smooth' })
                                 }
                             }}
-                            className='px-3 py-2 text-red-700 text-2xl'
+                            className='font-bold px-2 shrink-0 text-[#347433] text-2xl sm:text-3xl hover:cursor-pointer active:scale-125 active:animate-pulse transition-transform duration-150'
                         >
                             ⮜
                         </button>
@@ -185,12 +185,12 @@ export default function HomePage() {
                             className='flex overflow-x-auto snap-x snap-mandatory scroll-smooth md:space-x-4 scrollbar-hide'
                         >
                             {slideshowImages.map((img, index) => (
-                                <div key={index} className='flex-none w-full md:w-auto snap-center'>
+                                <div key={index} className='flex-none w-32 sm:w-40 md:w-auto snap-center'>
                                     <img
                                         src={img.imageUrl}
                                         onClick={() => setSlideIndex(index)}
                                         className={`w-full md:w-48 h-30 object-cover rounded-lg shadow-md transition-all ${index === slideIndex ?
-                                            'border-2 border-indigo-800' : 'border-2 border-transparent'}`}
+                                            'border-2 border-green-800' : 'border-2 border-transparent'}`}
                                         style={{ cursor: 'pointer' }}
                                     />
                                 </div>
@@ -213,7 +213,7 @@ export default function HomePage() {
                                     scrollRef.current.scrollBy({ left: imgWidth, behavior: 'smooth' })
                                 }
                             }}
-                            className='px-3 py-2 text-red-700 text-2xl'
+                            className='font-bold px-2 shrink-0 text-[#347433] text-2xl sm:text-3xl hover:cursor-pointer active:scale-125 active:animate-pulse transition-transform duration-150'
                         >
                             ⮞
                         </button>
@@ -222,18 +222,20 @@ export default function HomePage() {
 
 
                 {/* News & Upcoming Events Section*/}
-                <div className='w-full py-8 px-4 md:px-10 mt-8'>
+                <div className='w-full py-8 px-4 md:px-10 mt-2 bg-[#F6F0D7]'>
                     <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
 
                         {/* News */}
-                        <div className='bg-gray-400 p-4 w-full rounded-xl' >
-                            <h2 className='text-xl md:text-2xl font-semibold mb-4 mx-10'>News & Announcements</h2>
+                        <div className='bg-[#C1E59F] p-4 w-full rounded-xl' >
+                            <h2 className='text-xl md:text-2xl font-bold mb-4 mx-10 text-green-900'>
+                                News & Announcements
+                            </h2>
 
                             <div>
                                 {newsList.map((news, index) => (
-                                    <div key={index} className='mb-4 p-4 bg-gray-300 rounded-lg'>
-                                        <h3 className='font-semibold text-lg md:text-xl'>{news.title}</h3>
-                                        <p className='text-gray-700 mt-1 text-sm md:text-lg sm:text-base'>{news.content}</p>
+                                    <div key={index} className='mb-4 p-4 bg-[#73AF6F] rounded-lg'>
+                                        <h3 className='font-bold text-lg md:text-xl text-[#FFFFFF]'>{news.title}</h3>
+                                        <p className='mt-1 text-sm md:text-lg sm:text-base'>{news.content}</p>
                                     </div>
                                 ))}
                             </div>
@@ -241,15 +243,16 @@ export default function HomePage() {
 
 
                         {/* Upcoming Events */}
-                        <div className='bg-gray-400 rounded-xl shadow-lg p-4'>
-                            <h2 className='text-xl md:text-2xl font-semibold mb-4 mx-10'>
-                                Upcoming Events</h2>
+                        <div className='bg-[#C1E59F] rounded-xl p-4'>
+                            <h2 className='text-xl md:text-2xl font-bold mb-4 mx-10 text-green-900'>
+                                Upcoming Events
+                            </h2>
 
                             <div className='flex flex-col space-y-6'>
                                 {upcomingEvents.map((event) => (
                                     <div
                                         key={event.id}
-                                        className='flex flex-col md:flex-row bg-yellow-200 rounded-lg shadow-lg overflow-hidden'
+                                        className='flex flex-col md:flex-row bg-[#73AF6F] rounded-lg shadow-lg overflow-hidden'
                                     >
                                         {/* Event Image */}
                                         {event.imageUrl && (
@@ -264,8 +267,12 @@ export default function HomePage() {
 
                                         {/* Event details*/}
                                         <div className='flex flex-col justify-center p-4 text-center md:text-left'>
-                                            <h3 className='text-base md:text-2xl font-bold text-red-800'>{event.title}</h3>
-                                            <p className='text-sm md:text-2xl lg:text-base text-teal-900 mt-2'>{event.date}</p>
+                                            <h3 className='text-xl md:text-2xl font-bold text-[#FFFFFF]'>
+                                                {event.title}
+                                            </h3>
+                                            <p className='text-lg md:text-xl mt-2'>
+                                                {event.date}
+                                            </p>
                                         </div>
                                     </div>
                                 ))}
@@ -278,8 +285,10 @@ export default function HomePage() {
                 <div className='flex flex-col w-full'>
 
                     {/* Community Members */}
-                    <div className='bg-teal-600 py-6 w-full overflow-hidden'>
-                        <h2 className='text-xl md:text-2xl mb-4 text-white mx-10'>Community Members</h2>
+                    <div className='bg-[#B0CE88] py-6 w-full overflow-hidden'>
+                        <h2 className='text-xl md:text-2xl mb-4 text-green-900 mx-10'>
+                            Community Members
+                        </h2>
 
                         <div className="relative w-full overflow-hidden">
                             <div className="animate-scroll gap-6 px-6">
@@ -305,7 +314,7 @@ export default function HomePage() {
                     </div>
 
 
-                    {/* Services */}
+                    {/* Services 
                     <div className='bg-gray-300 shadow-lg p-6'>
                         <h2 className='text-xl md:text-2xl font-semibold mb-4 text-blue-900'>
                             Services
@@ -327,10 +336,13 @@ export default function HomePage() {
                             ))}
                         </div>
                     </div>
+                    */}
 
                     {/* Youtube Section*/}
-                    <div className='bg-purple-500 p-4 w-full min-h-[420px]' >
-                        <h2 className='text-xl md:text-2xl font-semibold mb-4 text-white'>Youtube Videos</h2>
+                    <div className='bg-[#F6F0D7] px-8 pt-8 w-full min-h-[420px]' >
+                        <h2 className='text-xl md:text-2xl font-semibold mb-4 text-green-900'>
+                            Youtube Videos
+                        </h2>
 
                         <div
                             ref={youtubeScrollRef}
@@ -386,7 +398,7 @@ export default function HomePage() {
                         </div>
                     </div>
 
-                    {/* Sectors Section*/}
+                    {/* Sectors Section
                     <div className='bg-green-300 p-6 w-full'>
                         <h2 className='text-xl md:text-2xl font-semibold mb-4 text-white'>Sectors</h2>
 
@@ -430,6 +442,7 @@ export default function HomePage() {
                             })}
                         </div>
                     </div>
+                    */}
                 </div>
             </div>
 
