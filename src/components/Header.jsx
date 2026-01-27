@@ -12,10 +12,10 @@ export default function Header() {
   return (
     <header className='bg-[#F6F0D7] py-4 md:py-6 px-3 md:px-6 md:p-4 flex flex-col md:flex-row items-center fixed top-0 w-full z-50 transition-transform duration-300'>
 
-      <div className="w-full flex flex-col xl:flex-row items-center -mt-3 md:-mt-4">
+      <div className="w-full flex flex-col lg:flex-row items-center -mt-3 md:-mt-4">
 
         {/* Mobile/Tablet */}
-        <div className='flex items-center w-full xl:hidden justify-between'>
+        <div className='flex items-center w-full lg:hidden justify-between'>
           {/* Logo */}
           <Link
             to='/'
@@ -42,7 +42,7 @@ export default function Header() {
         </div>
 
         {/* Desktop Logo + Title */}
-        <div className='hidden xl:flex items-center flex-1'>
+        <div className='hidden lg:flex items-center flex-1'>
           <Link
             to='/'
             className='mr-0 md:mr-6 mb-4 md:mb-0'
@@ -61,7 +61,7 @@ export default function Header() {
         </div>
 
         {/* Logos */}
-        <div className='hidden xl:flex flex-col xl:flex-row items-center gap-3 mt-2 md:mt-0 ml-0 md:ml-6'>
+        <div className='hidden lg:flex flex-col lg:flex-row items-center gap-3 mt-2 md:mt-0 ml-0 md:ml-6'>
 
           <div className='flex items-center gap-2 shrink-0'>
             {/* Instagram */}
@@ -91,12 +91,12 @@ export default function Header() {
             </a>
           </div>
 
-          {/* Join Our Community Button*/}
+          {/* Register a New Member Button*/}
           <Link
             to="/membership-form"
             className='bg-green-800 hover:bg-[#63A361] text-white px-4 py-2 rounded-lg font-semibold transition whitespace-nowrap'
           >
-            Join Our Community
+            Register a New Member
           </Link>
         </div>
       </div>
@@ -113,7 +113,7 @@ export default function Header() {
           {/* Home */}
           <Link
             to='/'
-            className='text-green-800 xl:hover:text-green-600 transition hover:underline px-3'
+            className='text-green-800 lg:hover:text-green-600 transition hover:underline px-3'
           >
             Home
           </Link>
@@ -124,13 +124,13 @@ export default function Header() {
               onClick={() =>
                 setDropDownMenu(dropDownMenu === 'chamber' ? null : 'chamber')
               }
-              className='w-full xl:w-auto cursor-pointer text-green-800 xl:hover:text-green-600 transition flex items-center justify-between xl:justify-start px-3'>
+              className='w-full lg:w-auto cursor-pointer text-green-800 lg:hover:text-green-600 transition flex items-center justify-between lg:justify-start px-3'>
               <span className="hover:underline transition">The Chamber</span>
-              <span className="hidden xl:inline text-sm">▾</span>
-              <span className='xl:hidden'>▾</span>
+              <span className="hidden lg:inline text-sm">▾</span>
+              <span className='lg:hidden'>▾</span>
             </button>
 
-            <div className='absolute top-full left-0 hidden xl:block xl:opacity-0 xl:invisible xl:group-hover:opacity-100 xl:group-hover:visible bg-[#F6F0D7] w-48 py-2 text-green-800 shadow-lg z-50  transition-all duration-200'>
+            <div className='absolute top-full left-0 hidden lg:block lg:opacity-0 lg:invisible lg:group-hover:opacity-100 lg:group-hover:visible bg-[#F6F0D7] w-48 py-2 text-green-800 shadow-lg z-50  transition-all duration-200'>
 
               <Link
                 to='/office-bearers'
@@ -153,7 +153,7 @@ export default function Header() {
             </div>
 
             {dropDownMenu === 'chamber' && (
-              <div className="xl:hidden ml-4 mt-2 space-y-2">
+              <div className="lg:hidden ml-4 mt-2 space-y-2">
                 <Link
                   to='/office-bearers'
                   className="block py-1 cursor-pointer text-green-800 active:text-[#90AB8B]"
@@ -194,13 +194,13 @@ export default function Header() {
               onClick={() =>
                 setDropDownMenu(dropDownMenu === 'services' ? null : 'services')
               }
-              className='w-full xl:w-auto cursor-pointer text-green-800 xl:hover:text-green-600 flex items-center justify-between xl:justify-start px-3'>
+              className='w-full lg:w-auto cursor-pointer text-green-800 lg:hover:text-green-600 flex items-center justify-between lg:justify-start px-3'>
               <span className="hover:underline transition">Services</span>
-              <span className="hidden xl:inline text-sm">▾</span>
-              <span className='xl:hidden'>▾</span>
+              <span className="hidden lg:inline text-sm">▾</span>
+              <span className='lg:hidden'>▾</span>
             </button>
 
-            <div className='absolute top-full left-0 hidden xl:block xl:opacity-0 xl:invisible xl:group-hover:opacity-100 xl:group-hover:visible bg-[#F6F0D7] w-48 py-2 text-green-800 shadow-lg z-50  transition-all duration-200'>
+            <div className='absolute top-full left-0 hidden lg:block lg:opacity-0 lg:invisible lg:group-hover:opacity-100 lg:group-hover:visible bg-[#F6F0D7] w-48 py-2 text-green-800 shadow-lg z-50  transition-all duration-200'>
 
               <Link
                 to="/membership-support"
@@ -229,7 +229,7 @@ export default function Header() {
             </div>
 
             {dropDownMenu === "services" && (
-              <div className="xl:hidden ml-4 mt-2 space-y-2">
+              <div className="lg:hidden ml-4 mt-2 space-y-2">
                 <Link
                   to='/membership-support'
                   className="block py-1 cursor-pointer text-green-800 active:text-[#90AB8B]"
@@ -281,13 +281,13 @@ export default function Header() {
               onClick={() =>
                 setDropDownMenu(dropDownMenu === 'sectors' ? null : 'sectors')
               }
-              className='w-full xl:w-auto cursor-pointer text-green-800 xl:hover:text-green-600 flex items-center justify-between xl:justify-start px-3'>
+              className='w-full lg:w-auto cursor-pointer text-green-800 lg:hover:text-green-600 flex items-center justify-between lg:justify-start px-3'>
               <span className="hover:underline transition">Sectors</span>
-              <span className="hidden xl:inline text-sm">▾</span>
-              <span className='xl:hidden'>▾</span>
+              <span className="hidden lg:inline text-sm">▾</span>
+              <span className='lg:hidden'>▾</span>
             </button>
 
-            <div className='absolute top-full left-0 hidden xl:block xl:opacity-0 xl:invisible xl:group-hover:opacity-100 xl:group-hover:visible bg-[#F6F0D7] w-48 py-2 text-green-800 shadow-lg z-50  transition-all duration-200'>
+            <div className='absolute top-full left-0 hidden lg:block lg:opacity-0 lg:invisible lg:group-hover:opacity-100 lg:group-hover:visible bg-[#F6F0D7] w-48 py-2 text-green-800 shadow-lg z-50  transition-all duration-200'>
 
               <Link
                 to='/tourism'
@@ -352,7 +352,7 @@ export default function Header() {
             </div>
 
             {dropDownMenu === "sectors" && (
-              <div className="xl:hidden ml-4 mt-2 space-y-2">
+              <div className="lg:hidden ml-4 mt-2 space-y-2">
                 <Link
                   to='/tourism'
                   className="block py-1 cursor-pointer text-green-800 active:text-[#90AB8B]"
@@ -410,14 +410,14 @@ export default function Header() {
           {/* Contact Us */}
           <a
             href='/'
-            className=' text-green-800 xl:hover:text-green-600 transition hover:underline px-3'
+            className=' text-green-800 lg:hover:text-green-600 transition hover:underline px-3'
           >
             Contact Us
           </a >
 
           {/* Social Media Icons and  Join Button */}
           {mobileMenuOpen && (
-            <div className='xl:hidden mt-4 pt-4 border-t border-blue-300 flex flex-col items-center space-y-4'>
+            <div className='lg:hidden mt-4 pt-4 border-t border-blue-300 flex flex-col items-center space-y-4'>
               <div className='flex gap-4'>
                 <a
                   href='https://www.instagram.com/the_ccik/'
@@ -446,10 +446,10 @@ export default function Header() {
 
               <Link
                 to='/membership-form'
-                className='bg-teal-500 hover:bg-teal-700 text-white px-5 py-2 rounded-lg text-sm font-semibold transition'
+                className='bg-[#67AE6E] hover:bg-[#67AE6E] active:bg-[#67AE6E] active:scale-95 text-white px-5 py-2 rounded-lg text-sm font-semibold transition transform'
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Join Our Community
+                Register New Member
               </Link>
             </div>
           )}

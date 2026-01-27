@@ -175,9 +175,9 @@ export default function HomePage() {
                                     scrollRef.current.scrollBy({ left: -imgWidth, behavior: 'smooth' })
                                 }
                             }}
-                            className='font-bold px-2 shrink-0 text-[#347433] text-2xl sm:text-3xl hover:cursor-pointer active:scale-125 active:animate-pulse transition-transform duration-150'
+                            className='font-bold px-2 shrink-0 text-[#347433] text-4xl sm:text-5xl md:text-6xl hover:cursor-pointer active:scale-125 active:animate-pulse transition-transform duration-150'
                         >
-                            ⮜
+                            ‹
                         </button>
 
                         <div
@@ -213,9 +213,9 @@ export default function HomePage() {
                                     scrollRef.current.scrollBy({ left: imgWidth, behavior: 'smooth' })
                                 }
                             }}
-                            className='font-bold px-2 shrink-0 text-[#347433] text-2xl sm:text-3xl hover:cursor-pointer active:scale-125 active:animate-pulse transition-transform duration-150'
+                            className='font-bold px-2 shrink-0 text-[#347433] text-4xl sm:text-5xl md:text-6xl hover:cursor-pointer active:scale-125 active:animate-pulse transition-transform duration-150'
                         >
-                            ⮞
+                            ›
                         </button>
                     </div>
                 </div>

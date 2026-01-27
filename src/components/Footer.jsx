@@ -1,11 +1,23 @@
 import mapImg from '../assets/map_preview.png'
+import { Link } from 'react-router-dom'
+
 
 
 export default function Footer() {
-    
+
     return (
         <footer className='bg-[#C5D89D] text-green-900 p-6 md:p-8 w-full flex flex-col space-y-8'>
 
+            {/* Register a New Member Button*/}   
+            <div className="w-full flex justify-center">
+                <Link
+                    to="/membership-form"
+                    className='bg-green-800 hover:bg-[#63A361] text-white px-6 py-3 rounded-lg font-semibold transition w-full md:w-auto md:px-10 text-center whitespace-nowrap'
+                >
+                    Register a New Member
+                </Link>
+            </div>
+            
             <div className='flex flex-col md:flex-row md:justify-between space-y-8 md:space-y-0 md:space-x-10'>
 
                 <div className='flex flex-col md:flex-row md:items-start md:space-x-6 space-y-4 md:space-y-0'>
@@ -27,11 +39,11 @@ export default function Footer() {
                         rel='noopener noreferrer'
                     >
                         <div className='w-28 h-20 md:w-32 md:h-24 rounded-lg border-2 border-[#63A361] overflow-hidden shadow-lg hover:opacity-90 transition'>
-                                <img
-                                    src={mapImg}
-                                    alt='CCIK Location Map'
-                                    className='w-full h-full object-cover'
-                                />
+                            <img
+                                src={mapImg}
+                                alt='CCIK Location Map'
+                                className='w-full h-full object-cover'
+                            />
                         </div>
                     </a>
                 </div>

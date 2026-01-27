@@ -20,16 +20,16 @@ export default function OfficeBearersPage() {
 
             <div className='pt-32'>
 
-                <div className="w-full flex flex-col items-center bg-amber-300 justify-center px-4 py-12 md:py-14 md:px-8 lg:py-16 ">
+                <div className="w-full flex flex-col items-center bg-[#C5D89D] justify-center px-4 py-12 md:py-14 md:px-8 lg:py-16 ">
                     <div className='border border-black px-4 py-2 text-center text-lg mx-auto mb-4'>
                         The Chamber
                     </div>
-                    <h2 className="text-2xl md:text-3xl text-center font-bold mb-6 ">
+                    <h2 className="text-2xl md:text-3xl text-center font-semibold mb-6 ">
                         CCIK Office Bearers
                     </h2>
                 </div>
 
-                <div className="pt-10 pb-12 px-4 md:px-8 bg-green-200 w-full">
+                <div className="pt-10 pb-12 px-4 md:px-8 bg-[#F6F0D7] w-full">
                     <div className='max-w-6xl mx-auto flex flex-col lg:flex-row gap-8'>
 
                         {/* List of Office Bearers */}
@@ -37,7 +37,7 @@ export default function OfficeBearersPage() {
                             {members.map((m, i) => (
                                 <div
                                     key={i}
-                                    className="flex flex-col sm:flex-row gap-6 bg-gray-50 p-4 rounded-lg shadow items-center sm:items-start"
+                                    className="flex flex-col sm:flex-row gap-6 bg-[#F9F8F6] p-4 rounded-lg shadow items-center sm:items-start"
                                 >
                                     <img
                                         src={m.photoUrl}
@@ -45,7 +45,7 @@ export default function OfficeBearersPage() {
                                         className="w-32 h-32 rounded-lg object-cover"
                                     />
                                     <div className='text-center sm:text-left'>
-                                        <h3 className="text-lg font-bold">{m.name}</h3>
+                                        <h3 className="text-lg font-semibold">{m.name}</h3>
                                         <p className="text-base">{m.title}</p>
                                     </div>
                                 </div>
@@ -54,7 +54,7 @@ export default function OfficeBearersPage() {
 
                         {/* Services */}
                         <div className='w-full '>
-                            <div className='bg-gray-50 shadow-lg p-6 top-32'>
+                            <div className='bg-[#F9F8F6] shadow-lg p-6 top-32 rounded-lg'>
                                 <h3 className='text-2xl font-bold mb-4 border-b pb-2'>
                                     Services Offered by CCIK
                                 </h3>

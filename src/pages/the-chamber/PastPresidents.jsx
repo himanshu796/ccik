@@ -31,7 +31,7 @@ export default function PastPresidents() {
 
             <div className='pt-32'>
 
-                <div className="w-full flex flex-col items-center bg-amber-300 justify-center px-4 py-12 md:py-14 md:px-8 lg:py-16 ">
+                <div className="w-full flex flex-col items-center bg-[#C5D89D] justify-center px-4 py-12 md:py-14 md:px-8 lg:py-16 ">
                     <div className='border border-black px-4 py-2 text-center text-lg mx-auto mb-4'>
                         The Chamber
                     </div>
@@ -41,20 +41,20 @@ export default function PastPresidents() {
 
                 </div>
 
-                <div className="pt-10 pb-4 px-4 md:px-8 bg-green-200 w-full">
+                <div className="pt-10 pb-4 px-4 md:px-8 bg-[#F6F0D7] w-full">
                     <div className='max-w-6xl mx-auto'>
 
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
 
                             {/* List of Past Presidents */}
 
-                            <div className='bg-red-50 shadow p-10 md:p-12'>
+                            <div className='bg-[#F9F8F6] shadow p-10 md:p-12'>
 
                                 <div className='flex flex-col gap-6'>
                                     {pastPresidents.map(m => (
                                         <div
                                             key={m.id}
-                                            className="bg-blue-200 p-4 rounded-lg shadow"
+                                            className="bg-[#A8DF8E] p-4 rounded-lg shadow"
                                         >
                                             <h3 className="text-lg font-bold text-black">
                                                 {m.name}
@@ -66,7 +66,7 @@ export default function PastPresidents() {
 
                             {/* Services */}
                             <div className='w-full '>
-                                <div className='bg-gray-50 shadow-lg p-6 top-32'>
+                                <div className='bg-[#F9F8F6] shadow-lg p-6 top-32'>
                                     <h3 className='text-2xl font-bold mb-4 border-b pb-2'>
                                         Services Offered by CCIK
                                     </h3>
