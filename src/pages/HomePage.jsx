@@ -53,7 +53,7 @@ export default function HomePage() {
                 })));
 
             {/* Fetch Upcoming Events */ }
-            setUpcomingEvents((await getDocs(collection(db, 'upcomingEvents')))
+            setUpcomingEvents((await getDocs(collection(db, 'events')))
                 .docs.map(d => ({
                     id: d.id,
                     ...d.data()
