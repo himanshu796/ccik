@@ -291,7 +291,7 @@ export default function HomePage() {
                         </h2>
 
                         <div className="relative w-full overflow-hidden">
-                            <div className="animate-scroll gap-6 px-6">
+                            <div className="flex animate-scroll gap-6 px-6 whitespace-nowrap">
                                 {members.concat(members).map((member, index) => (
                                     <div
                                         key={`${member.id}-${index}`}
@@ -301,6 +301,7 @@ export default function HomePage() {
                                             src={member.photoUrl}
                                             alt={member.name}
                                             className='w-full h-full object-cover'
+                                            loading="lazy"
                                         />
                                         {/* Name at bottom */}
                                         <div className="absolute bottom-0 w-full bg-black/60 text-white text-xs text-center py-1" >
